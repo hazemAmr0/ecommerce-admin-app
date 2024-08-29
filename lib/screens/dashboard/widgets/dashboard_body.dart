@@ -40,14 +40,14 @@ class DashboardBody extends StatelessWidget {
                       ),
                       DashboardButton(
                         onTap: () {
-                        
+                                                  Navigator.pushNamed(context, Routes.orders);
+
                         },
                         icon: Icons.trending_up,
                         text: 'View ordes',
                       ),
                       DashboardButton(
                         onTap: () {
-                         
                         },
                         icon: Icons.notification_add,
                         text: 'push notification',

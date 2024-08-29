@@ -26,4 +26,32 @@ static List<String> categoryList = [
     );
     return menuItems;
   }
+    //want list of statues
+
+
+
+
+  static List<String> statueList = [
+    'pending',
+    'processing',
+    'shipped',
+    'cancelled',
+    'delivered',
+    // Add more statues as needed
+  ];
+
+  static List<DropdownMenuItem<String>>? get statueDropDownList {
+    List<DropdownMenuItem<String>>? menuItems =
+        List<DropdownMenuItem<String>>.generate(
+      statueList.length,
+      (index) => DropdownMenuItem(
+        value: statueList[index],
+        child: Text(
+          statueList[index],
+        ),
+      ),
+    );
+    return menuItems;
+  }
+
 }

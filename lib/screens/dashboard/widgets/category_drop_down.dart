@@ -26,6 +26,7 @@ class _CategoryDropdownState extends State<CategoryDropdown> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: DropdownButtonHideUnderline(
+        
         child: DropdownButton<String>(
           hint: Text(widget.categoryValue ?? "Select Category"),
           value: widget.categoryValue,

@@ -1,5 +1,6 @@
 import 'package:admin_app/screens/dashboard/dashboard_screen.dart';
 import 'package:admin_app/screens/edit_product/edit_upload_product.dart';
+import 'package:admin_app/screens/orders/admin_order_view.dart';
 import 'package:admin_app/screens/search/search_scree.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,11 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => DashboardScreen());
       case Routes.editProduct:
         return MaterialPageRoute(builder: (_) => EditOrUploadProductScreen());
+        case Routes.orders:
+        return MaterialPageRoute(builder: (_) => AdminOrdersScreen());
+        case Routes.orders:
+        return MaterialPageRoute(builder: (_) => AdminOrdersScreen());
+
 
       // Add other cases as needed
       default:

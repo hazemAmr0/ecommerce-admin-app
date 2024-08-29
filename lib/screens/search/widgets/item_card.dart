@@ -4,7 +4,7 @@ import 'package:admin_app/screens/edit_product/edit_upload_product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 class ItemCard extends StatelessWidget {
   ItemCard({required this.productId});
 
@@ -55,13 +55,16 @@ class ItemCard extends StatelessWidget {
                             color: Colors.blue[50],
                           ),
                           child: Center(
-                              child: Image(
-                            image: NetworkImage(
-                              getCurrProduct.productImage ?? '',
-                              scale: .5,
-                            ),
-                          )),
+            child: Image.network(
+              getCurrProduct.productImage ?? '',
+              fit: BoxFit.cover,
+              width: 200.w,
+              height: 150.h,)
+          ),
                         ),
+
+                               
+                        
                       ],
                     ),
                     Padding(
