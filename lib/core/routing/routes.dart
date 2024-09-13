@@ -6,5 +6,6 @@ class Routes {
   static const String editProduct ='/editProduct';
   static const String orders ='/orders';
   static const String swiper ='/swiper';
+  static const String pushNotifications ='/pushNotifications';
 
 }

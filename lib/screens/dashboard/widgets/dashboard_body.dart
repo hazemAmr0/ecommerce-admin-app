@@ -48,6 +48,8 @@ class DashboardBody extends StatelessWidget {
                       ),
                       DashboardButton(
                         onTap: () {
+        Navigator.pushNamed(context, Routes.pushNotifications);
+
                         },
                         icon: Icons.notification_add,
                         text: 'push notification',

@@ -61,6 +61,7 @@ class ItemCard extends StatelessWidget {
               width: 200.w,
               height: 150.h,)
           ),
+        
                         ),
 
                                
