@@ -48,14 +48,57 @@ List<ProductModel> productsByCategory(String category) {
 }
 Future<void> deleteProduct(String productId) async {
     try {
+      // Step 1: Fetch all users
+      QuerySnapshot usersSnapshot =
+          await FirebaseFirestore.instance.collection('users').get();
+
+      for (var userDoc in usersSnapshot.docs) {
+        // Step 2: Get user data
+        var userData = userDoc.data() as Map<String, dynamic>;
+
+        // Step 3: Check if the product is in userCart
+        if (userData['userCart'] != null) {
+          List<dynamic> userCart = userData['userCart'];
+          userCart
+              .removeWhere((cartItem) => cartItem['productId'] == productId);
+
+          // Update userCart in Firestore
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(userDoc.id)
+              .update({
+            'userCart': userCart,
+          });
+        }
+
+        // Step 4: Check if the product is in favoriteCart
+        if (userData['favorite'] != null) {
+          List<dynamic> favoriteCart = userData['favorite'];
+          favoriteCart.removeWhere((favoriteItem) => favoriteItem['productId']== productId);
+
+          // Update favoriteCart in Firestore
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(userDoc.id)
+              .update({
+            'favorite': favoriteCart,
+          });
+          print('Product deleted successfully from favoriteCart');
+        }
+      }
+
+      // Step 5: Delete the product from the products collection
       await FirebaseFirestore.instance
           .collection('products')
           .doc(productId)
           .delete();
-      print('Product deleted successfully');
+
+      print('Product and associated entries deleted successfully');
     } catch (e) {
       print('Error deleting product: $e');
     }
   }
+
+
 
 }
